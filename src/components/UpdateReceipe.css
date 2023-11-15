@@ -1,0 +1,129 @@
+/* Center the form on the page */
+.UpdateRecipe {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  margin: 0 auto;
+  max-width: 600px;
+  border-radius: 20px;
+  /* box-shadow: 3px 1px 2px 3px rgba(226, 27, 27, 0.4); */
+  background: rgba(255, 255, 255, 0.866);
+
+
+  /* background-color: #fff; */
+}
+
+
+
+.UpdateRecipe-add-form {
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  margin-bottom: 50px;
+  align-items: center;
+  justify-content: center;
+
+  padding: 20px;
+  /* backdrop-filter: blur(10px); */
+
+  color: #fff;
+  transition: transform 0.3s ease;
+}
+
+.UpdateRecipe-add-form input:focus {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.2);
+  border: none;
+  padding: 10px;
+  margin-bottom: 15px;
+  
+  backdrop-filter: blur(5px);
+  box-shadow: 8px 8px 5px 0px rgba(0, 0, 0, 0.4);
+  color: #fff;
+  transition: transform 0.3s ease;
+  outline: none; /* Added outline to remove browser default focus styles */
+}
+
+/* Style form container */
+.UpdateRecipe form {
+  padding: 20px;
+  border-radius: 10px;
+   /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
+} 
+
+/* Style form labels */
+.UpdateRecipe label {
+  font-weight: bold;
+  margin-bottom: 10px;
+  color: black; /* Removed !important */
+  padding: 7px; /* Removed !important */
+}
+
+/* Style form inputs and textareas */
+.UpdateRecipe-add-form input,
+textarea,
+select {
+  width: 100%;   
+  padding: 10px;
+  margin-bottom: 15px;
+  border: 1px solid #4e4b4b;
+  background-color: #fff;
+}
+.UpdateRecepie-add-form-outline input{
+  margin: 15px!important;
+}
+/* Style the "Add Ingredient" button */
+.UpdateRecipe button {
+  background: linear-gradient(147deg, #990000 0%, #ff0000 74%);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  margin-bottom: 15px;
+  margin-left: 195px;
+}
+
+.btn-sub {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Style the difficulty select */
+.UpdateRecipe select {
+  background-color: #fff;
+}
+
+.recepie-group {
+  box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+  border-radius: 20px;
+}
+
+.UpdateRecipe h2 {
+  color: rgb(11, 9, 9);
+  font-family:Verdana, Geneva, Tahoma, sans-serif;
+
+}
+.UpdateRecepie-add-form-ingre{
+display: flex;
+gap:5px;
+
+}
+.UpdateRecepie-add-form-outline{
+  border: 1px solid black
+}
+.UpdateRecepie-add-form-ingre input{
+  flex-basis: 50%;
+ 
+}
+
+/* Add media queries for responsiveness */
+@media (max-width: 600px) {
+  .UpdateRecipe form {
+    width: 90%;
+  }
+}

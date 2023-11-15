@@ -1,48 +1,83 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
-
-
+import { useParams, useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 function Recipe() {
+    // const token = localStorage.getItem('token')
+    const userId = localStorage.getItem('userId');
+    const token = localStorage.getItem('token');
 
     let params = useParams();
+    let navigate = useNavigate();
     const [details, setDetails] = useState({});
     const [activeTab, setActiveTab] = useState("instructions")
 
     const fetchDetails = async () => {
-        const data = await fetch(`https://api.spoonacular.com/recipes/${params.name}/information?apiKey=${process.env.REACT_APP_API_KEY}`);
-        const detailData = await data.json();
-        setDetails(detailData);
+        const response = await axios.get(`http://localhost:3000/Recipes/${params.id}`);
+        console.log(response.data.data)
+       
+        setDetails(response.data.data);
     }
 
     useEffect(() => {
         fetchDetails();
-    }, [params.name]);
+    }, [params.id]);
+
+    const handleEdit = () => {
+       navigate(`/EditRecipe/${params.id}`)
+    };
+
+    const handleDelete = () => {
+        const confirmDelete = window.confirm('Are you sure you want to delete this recipe?');
+        if (confirmDelete) {
+          axios.delete(`http://localhost:3000/Recipes/${params.id}`, {
+            headers: {
+              Authorization: `Bearer ${token}`,
+            },
+          })
+            .then(() => {
+              
+              navigate('/MyRecipes');
+            })
+            .catch((error) => {
+              console.error('Error deleting recipe:', error);
+              alert('Failed to delete recipe');
+            });
+        }
+    };
+    const isOwner = details.userId === userId; // Check if the user is the owner of the recipe
 
 
   return (
     <DetailWrapper>
         <div>
-            <h2>{details.title}</h2>
-            <img src={details.image} alt="" />
+            <h2 style={{ color: 'white'}}>{details.title}</h2>
+            <img src={details.imageUrl} alt="" />
+            {isOwner && ( 
+                    <div>
+                        <Button onClick={handleEdit}>Edit</Button>
+                        <Button onClick={handleDelete}>Delete</Button>
+                    </div>
+                )}
         </div>
+        
         <Info>
             <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab("instructions")}>Instructions</Button> 
-            <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab("ingredients")}>Ingredients</Button>      
-
+            <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab("ingredients")}>Ingredients</Button>    
+            
             {activeTab === "instructions" && (
 
                 <div>
-                <h3 dangerouslySetInnerHTML={{__html: details.summary}}></h3>
+                <h3 dangerouslySetInnerHTML={{__html: details.description}}></h3>
                 <h3 dangerouslySetInnerHTML={{__html: details.instructions}}></h3>
-            </div>
+            </div> 
             )}
             
             {activeTab === "ingredients" && (
                  <ul>
-                {details.extendedIngredients.map((ingredient) => (
-                <li key={ingredient.id}>{ingredient.original}</li>
+                {details.ingredients.map((ingredient) => (
+                <li key={ingredient.name}>{ingredient.name} : {ingredient.quantity}</li>
                 ))}
                 </ul>
 
@@ -72,6 +107,7 @@ const DetailWrapper = styled.div`
     h2 {
         margin-bottom: 1rem;
         font-size: 30px;
+    
     }
     li {
         font-size: 1.2rem;

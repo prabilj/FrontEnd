@@ -1,7 +1,9 @@
 import React from 'react'
-import Bangladeshi from "../components/Bangladeshi";
+import Indian from "../components/Indian";
 import Popular from "../components/Popular";
 import { motion } from 'framer-motion';
+import Category from '../components/Category';
+import Chinees from '../components/Chinees';
 
 function Home() {
     return (
@@ -11,8 +13,11 @@ function Home() {
           exit={{opacity: 0}}
           transition={{duration: 0.5}}
         >
-            <Bangladeshi />
-            <Popular />
+            <Category />
+            <Indian />
+            <Chinees/>
+            {/* <Popular /> */}
+        
         </motion.div>
     );
 };

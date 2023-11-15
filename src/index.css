@@ -14,7 +14,19 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   margin: 0% 10%;
+ 
+ 
+  background:url("https://i.pinimg.com/564x/71/68/00/7168000e1b349b0a9685023e4a86fd70.jpg");
+  
+  background-repeat: no-repeat;
+  object-fit: contain;
+  background-size:cover;
+  
+  opacity: 0.9;
+    
 }
+
+
 
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
@@ -23,16 +35,48 @@ code {
 
 h3 {
   font-size: 1.5rem;
-  color: rgb(49, 49, 49);
+  /* color: rgb(49, 49, 49); */
+  color: #fff;
   line-height: 2.5rem;
   margin: 2rem 0rem;
 }
 
 h4 {
   font-size: 1rem;
-  color: rgb(49, 49, 49);
+  /* color: rgb(49, 49, 49); */
+  color: #fff;
 }
 
 a {
-  color: rgb(49, 49, 49);
+  color: black;
+}
+
+/* Reset default styles for the list */
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  color: #fff;
+}
+
+/* Style the horizontal menu bar */
+.menu-bar {
+  background-color: #333; 
+}
+
+.menu-bar ul {
+  display: flex; 
+}
+
+.menu-bar li {
+  padding: 10px 20px; 
+}
+
+.menu-bar a {
+  text-decoration: none; 
+  color: #fff; 
+}
+
+.menu-bar a:hover {
+  text-decoration: underline; 
 }

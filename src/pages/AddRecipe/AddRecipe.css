@@ -1,0 +1,165 @@
+
+/* Center the form on the page */
+.AddRecipe div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0 auto;
+    max-width: 600px;
+  }
+  .recepie-add-form {
+    max-width: 600px;
+    display: flex;
+    flex-direction: column;
+    margin: 0 auto;
+    margin-bottom: 50px;
+    align-items: center;
+    justify-content: center;
+    background: rgba(255, 255, 255, 0.866); /* Apply a semi-transparent white background */
+    border-radius: 42px;
+    padding: 20px;
+    backdrop-filter: blur(10px); /* Apply a blur effect */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 8px 8px 5px 0px rgba(0,0,0,0.4);
+            -webkit-box-shadow: 8px 8px 5px 0px rgba(0,0,0,0.4);
+            -moz-box-shadow: 8px 8px 5px 0px rgba(0,0,0,0.4);
+  }
+  .recepie-add-form input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.2); /* Apply a semi-transparent white background to the input */
+    border: none;
+    padding: 10px;
+    margin-bottom: 15px;
+    border-radius: 40px;
+    backdrop-filter: blur(5px); /* Apply a slight blur effect to the input */
+    box-shadow: 8px 8px 5px 0px rgba(0,0,0,0.4);
+    -webkit-box-shadow: 8px 8px 5px 0px rgba(0,0,0,0.4);
+    -moz-box-shadow: 8px 8px 5px 0px rgba(0,0,0,0.4);
+    color: black; /* Set text color to white */
+    transition: transform 0.3s ease;
+  }
+  
+  .recepie-add-form input:focus{
+    transform: scale(1.05);
+    border:none;
+    outline: none;
+  }
+
+  /* Style form container */
+  .AddRecipe form {
+    background-color: #f0f0f0;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Style form labels */
+  .AddRecipe label {
+    font-weight: bold;
+    margin-bottom: 5px!important;
+  }
+  
+  /* Style form inputs and textareas */
+  .recepie-add-form  input,
+
+  .recepie-add-form textarea,
+  .recepie-add-form select {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #4e4b4b;
+    border-radius: 42px;
+    background-color: #fff;
+    border-radius: none;
+    border:none;
+    ;
+    
+  }
+  .recepie-add-form label{
+    color: black!important;
+    padding: 5px;
+  }
+  /* Style the "Add Ingredient" button */
+button {
+    background-color: #990000;
+    background-image: linear-gradient(147deg,#990000 0%,#ff0000 74%);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+    margin-bottom: 15px;
+  }
+  
+  /* Style the "Submit Recipe" button */
+   /* button[type="submit"] {
+    background-color: #cee0d2;
+    color: #7d7ac9;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    cursor: pointer;
+  } */
+  .btn-sub{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Style the difficulty select */
+  .AddRecipe select {
+    background-color: #fff;
+  }
+  .recepie-group{
+    /* background: linear-gradient(90deg,rgb(131, 182, 192) 35%, rgb(164, 132, 170) 80%); */
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius: 20px;
+    /* background: rgb(2,0,36); */
+ /* background: linear-gradient(90deg,rgb(55,33,96) 5%, rgb(230,20,96) 72%,rgb(226,20,96)90%); */
+
+}
+h2{
+  color: black
+}
+  
+  /* Add media queries for responsiveness */
+  @media (max-width: 600px) {
+    form {
+      width: 90%;
+    }
+  }
+  
+  /* Customize the toolbar styles */
+/* .ql-toolbar {
+  background-color: #f1f1f1;
+  border: 1px solid #ccc;
+} */
+
+/* Customize the content area styles */
+.ql-container {
+  background-color: #fff;
+  border: 1px solid #ccc;
+  padding: 5px;
+  border-radius: 5px;
+}
+
+/* Customize the text content styles */
+.ql-editor {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* Customize the selected text styles */
+.ql-editor .ql-selected {
+  background-color: #fff;
+  color: #fff;
+}
+
+/* Customize the placeholder text styles */
+.ql-editor::before {
+  /* content: 'Start typing...'; */
+  content: none;
+  color: #fff;
+}

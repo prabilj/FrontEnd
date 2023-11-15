@@ -4,35 +4,27 @@ import styled from "styled-components";
 import { Splide, SplideSlide } from "@splidejs/react-splide";
 import "@splidejs/splide/dist/css/splide.min.css";
 import { Link } from 'react-router-dom';
+import axios from 'axios';
+function Indian() {
 
-
-function Bangladeshi() {
-
-    const [bangladeshi, setBangladeshi] = useState([]);
+    const [indian, setIndianRecipes] = useState([]);
 
     useEffect(() => {
-        getBangladeshi();
+        getIndianRecipes();
 
     }, []);
 
-    const getBangladeshi = async () => {
+    const getIndianRecipes = async () => {
 
-        const check = localStorage.getItem('bangladeshi');
         
+            console.log("hloo indian")
+            const response = await axios.post('http://localhost:3000/Recipes/category', {category:"6530e06cb271f16f7c70dada"});
 
-        if (check) {
-            setBangladeshi(JSON.parse(check));
-        } else {
-            const api = await fetch(`https://api.spoonacular.com/recipes/random?apiKey=${process.env.REACT_APP_API_KEY}&tags=indian&number=15`);
+            
+            console.log("indian",response.data)
 
-            const data = await api.json();
-
-            localStorage.setItem("bangladeshi", JSON.stringify(data.recipes));
-            setBangladeshi(data.recipes);
-            console.log(data.recipes);
-
-        };
-
+            setIndianRecipes(response.data);
+         
     };
 
 
@@ -41,22 +33,23 @@ function Bangladeshi() {
     return (
         <div>
             <Wrapper>
-                <h3>Bangladeshi Cuisine</h3>
+                <h3>Indian Cuisine</h3>
 
                 <Splide options={{
                     perPage: 3,
+                    // type:"loop",
                     drag: 'free',
                     gap: '1rem',
                     arrows: false,
                 }}>
 
-                    {bangladeshi.map((recipe) => {
+                    {indian.map((recipe) => {
                         return (
-                            <SplideSlide key={recipe.id}>
+                            <SplideSlide key={recipe._id}>
                                 <Card>
-                                <Link to={'/recipe/' + recipe.id}>
+                                <Link to={'/recipe/' + recipe._id}>
                                     <p>{recipe.title}</p>
-                                    <img src={recipe.image} alt={recipe.title} />
+                                    <img src={recipe.imageUrl} alt={recipe.title} />
                                     <Gradient />
                                     </Link>
                                 </Card>
@@ -115,4 +108,4 @@ const Gradient = styled.div`
     `;
 
 
-export default Bangladeshi;
+export default Indian;

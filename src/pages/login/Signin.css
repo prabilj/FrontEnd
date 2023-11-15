@@ -1,0 +1,69 @@
+.signin-container {
+    min-width: 400px;
+    margin: 50px 449px;
+    padding: 2rem;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    /* background-color: #f9f9f9;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1); */
+    /* background: rgb(2,0,36); */
+    /* background: linear-gradient(90deg,rgb(55,33,96) 20%, rgb(230,20,96) 72%,rgb(226,20,96)90%); */
+    background: #fff;
+    
+}
+/* .signin-background{
+    width: 100%;
+    height: 100%;                                      //check background image width
+    background:url('../../../assets/bgc.jpg');
+    object-fit: contain;
+} */
+
+.logo {
+    max-width: 100px;
+    margin-bottom: 1rem;
+}
+h2 {
+    margin-bottom: 1rem;
+}
+
+form input{
+    width: 100%;
+    padding: 0.5rem;
+    margin-bottom: 1rem;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+
+
+form button {
+    background-color: #FB5D54;
+    color: white;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-bottom: 10px;
+}
+form button:hover {
+    background-color: #FB5D54;
+}
+
+form .error {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+.forgot-password-container {
+    margin-top: 24px;
+    /* display: flex;
+    justify-content: right;
+    align-items: center; */
+}
+.forgotbtn{
+    /* background-color: orangered; */
+    padding: 2px;
+    color: black;
+    border-radius: 5px;
+}
+ 

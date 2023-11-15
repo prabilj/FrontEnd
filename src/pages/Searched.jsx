@@ -2,22 +2,26 @@ import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import axios from 'axios';
 
 function Searched() {
 
   const [searchedRecipes, setSearchedRecipes] = useState([]);
-  let params = useParams();
+  const params = useParams();
 
 
-  const getSearched = async (name) => {
-        const data = await fetch(`https://api.spoonacular.com/recipes/complexSearch?apiKey=${process.env.REACT_APP_API_KEY}&query=${name}&number=18`);
+  const getSearched = async (title) => {
+    
         
-        const recipes = await data.json();
-        setSearchedRecipes(recipes.results);
+        const data = await axios.get(`http://localhost:3000/search/${title}`)
+       console.log(data)
         
+        setSearchedRecipes(data.data);
+
     }
 
     useEffect(() => {
+      // console.log(params.search)
       getSearched(params.search);
     },[params.search]);
 
@@ -25,9 +29,9 @@ function Searched() {
   return <Grid>
     {searchedRecipes.map((item) => {
       return (
-        <Card key={item.id}>
-        <Link to={'/recipe/' + item.id}>
-          <img src={item.image} alt="" />
+        <Card key={item._id}>
+        <Link to={'/recipe/' + item._id}>
+          <img src={item.imageUrl} alt="" />
           <h4>{item.title}</h4>
           </Link>
         </Card>
@@ -60,3 +64,9 @@ const Card = styled.div`
 `;
 
 export default Searched 
+
+
+
+
+
+
