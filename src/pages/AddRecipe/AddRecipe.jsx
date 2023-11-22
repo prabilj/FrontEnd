@@ -171,19 +171,7 @@ function AddRecipe() {
               </button> </div>
              
             </div>
-    
-            {/* <div>
-              <label htmlFor='instructions'>Instructions:</label>
-              <ReactQuill
-                id='instructions'
-                name='instructions'
-                value={recipeData.instructions}
-                // onChange={handleInputChange}
-                onchange={(value) => setRecipeData({...recipeData, instructions: value})}
-                modules={{ toolbar: false }}
-                required
-              />
-            </div> */}
+  
 
 <div>
   <label htmlFor='instructions'>Instructions:</label>

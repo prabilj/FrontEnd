@@ -1,6 +1,6 @@
 import React from 'react'
 import Indian from "../components/Indian";
-import Popular from "../components/Popular";
+// import Popular from "../components/Popular";
 import { motion } from 'framer-motion';
 import Category from '../components/Category';
 import Chinees from '../components/Chinees';

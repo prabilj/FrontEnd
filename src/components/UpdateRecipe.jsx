@@ -52,7 +52,7 @@ function EditRecipe(props) {
     // Fetch the existing recipe data based on the recipeId
     axios.get(`http://localhost:3000/Recipes/${id}`)
       .then((response) => {
-        // console.log("update-----",response);
+        console.log("update-----",response);
         const existingRecipeData = response.data.data;
         setRecipeData(existingRecipeData);
         setImage(response.data.data.imageUrl)
@@ -76,7 +76,8 @@ function EditRecipe(props) {
       ingredients: [...recipeData.ingredients, { name: '', quantity: '' }],
     });
   };
-
+  
+  
   const handleIngredientChange = (index, event) => {
     const updatedIngredients = [...recipeData.ingredients];
     updatedIngredients[index][event.target.name] = event.target.value;
@@ -101,10 +102,30 @@ function EditRecipe(props) {
       alert('An error occurred while updating the recipe');
     }
   };
-  const handleDelete = (id) => {
-    const updatedItems = recipeData.ingredients.filter(ingredient=> ingredient._id !== id);
-    setRecipeData({ ...recipeData,updatedItems});
-  }
+  const handleDelete = async (e,ingredientIdd) => {
+    e.preventDefault();
+    const recepieId = id;
+    
+    const ingredientId = ingredientIdd;
+  
+    try {
+      // Send DELETE request to the server
+      const response = await axios.delete(`http://localhost:3000/Recipes/${recepieId}/ingredients/${ingredientId}`);
+      
+      if (response.status === 200) {
+        // If the deletion is successful, update the state
+        const updatedItems = recipeData.ingredients.filter(ingredient => ingredient._id !== ingredientId);
+        setRecipeData({ ...recipeData, ingredients: updatedItems });
+        alert('Ingredient deleted successfully!');
+      } else {
+        alert('Failed to delete ingredient');
+      }
+    } catch (error) {
+      console.error('Error deleting ingredient:', error);
+      alert('An error occurred while deleting the ingredient');
+    }
+  };
+  
 
   return (
     <div className='UpdateRecipe' >
@@ -138,16 +159,16 @@ function EditRecipe(props) {
             <div className='UpdateRecepie-add-form-ingre 'key={index}>
               <input
                 type="text"
-                name={`ingredients[${index}].name`}
+                name={`name`}
                 placeholder='Ingredient Name'
                 defaultValue={ingredient.name}
                 onChange={(e) => handleIngredientChange(index, e)}
                 required
               />
-              {/* <button key={id} onClick={()=>(handleDelete(ingredient._id))} >Delete</button> */}
+             <button key={id} onClick={(e) => handleDelete(e, ingredient._id)}>Delete</button>
               <input
                 type="text"
-                name={`ingredients[${index}].quantity`}
+                name={`quantity`}
                 placeholder='Quantity'
                 defaultValue={ingredient.quantity}
                 onChange={(e) => handleIngredientChange(index, e)}
@@ -192,13 +213,13 @@ function EditRecipe(props) {
         </div>
 
         <div className='UpdateRecepie-add-form '>
-  <label style={{ color: 'black' }}>Image URL:</label>
+  {/* <label style={{ color: 'black' }}>Image URL:</label>
   <input
     type="text"
     name="imageUrl"
     value={recipeData.imageUrl}
     onChange={handleChange}
-  />
+  /> */}
   {recipeData.imageUrl && (
     <img src={recipeData.imageUrl} alt="Recipe" style={{ maxWidth: '100%' }} />
   )}
@@ -224,8 +245,9 @@ function EditRecipe(props) {
           <input
             type="text"
             name="category"
-            value={recipeData.category}
+            value={recipeData.category.category}
             onChange={handleChange}
+            disabled
           />
         </div>
         
